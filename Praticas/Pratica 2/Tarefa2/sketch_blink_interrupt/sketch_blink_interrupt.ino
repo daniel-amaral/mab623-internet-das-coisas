@@ -1,22 +1,19 @@
 //CONNECT pinOut WITH pinInt0!  
-  
-int pinLed = 13;  
-int pinOut = 11;  
+
+int pinOut = 3;  
 int pinInt0 = 2;  
 volatile int state = LOW;  
   
 void setup(){  
-     pinMode(pinOut, OUTPUT);  
-     pinMode(pinLed, OUTPUT);  
-     attachInterrupt(digitalPinToInterrupt(pinInt0), blink, CHANGE); 
-     digitalWrite(pinLed, LOW); 
+     Serial.begin(9600);
+     pinMode(pinOut, OUTPUT);
+     pinMode(pinInt0, INPUT_PULLUP);
+     attachInterrupt(digitalPinToInterrupt(pinInt0), blink, CHANGE);
 }  
 void loop(){  
      digitalWrite(pinOut, state);  
-     state = !state;  
-     delay(500);  
 }  
   
 void blink(){  
-     digitalWrite(pinLed,state);  
+     state = !state;
 }  
