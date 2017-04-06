@@ -3,10 +3,9 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-#define TOTAL_LEITURAS 20
+#define TOTAL_LEITURAS 200
 
 const int LM35 = A0;
-float temperatura[TOTAL_LEITURAS];
 float temperaturaMedia=0;
 int i=0;
 
@@ -31,11 +30,12 @@ void loop() {
    * If 10mV is equal to 1 degree Celcius, 10 / 1.0742 = ~9.31. So, for every change 
    * of 9.31 in the analog reading, there is one degree of temperature change.
    */
-   
-  temperatura[i] = analogRead(LM35); //(float(analogRead(LM35))*1.1f/(1023.0f))/0.01f;
-  temperatura[i] = map(temperatura[i], 0, 1023, 0, 1100 /*1.1V = 1100mV*/);
-  temperatura[i] /= 10.0f;
-  temperaturaMedia += temperatura[i];
+  
+  float temperatura;
+  temperatura = analogRead(LM35); //(float(analogRead(LM35))*1.1f/(1023.0f))/0.01f;
+  temperatura = map(temperatura, 0, 1023, 0, 1100 /*1.1V = 1100mV*/);
+  temperatura /= 10.0f;
+  temperaturaMedia += temperatura;
   i++;
 
   if(i==TOTAL_LEITURAS){    
