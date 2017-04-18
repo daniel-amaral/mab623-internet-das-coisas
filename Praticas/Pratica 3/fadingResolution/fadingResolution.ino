@@ -2,32 +2,22 @@
 #define MAX 4095
 
 int ledPin = 3;
-int pwm = 0;
-int direcao = 1;
 
 void setup() 
-{
-  pinMode(ledPin, OUTPUT);
+{  
   analogWriteResolution(12);
+  analogReadResolution(12);
+  pinMode(A0, INPUT);
+  pinMode(ledPin, OUTPUT);
 }
  
 void loop()
 {
-  int fator = 200;
+  // lendo potenciometro:
+  int leitura = analogRead(A0);
+  Serial.print(leitura, DEC);
   
-  if (direcao)
-    pwm += fator;
-  else
-    pwm -= fator;
-
-  pwm = (pwm > MAX) ? MAX : pwm;
-  pwm = (pwm < 0) ? 0 : pwm;
-
-  if (pwm >= MAX || pwm <= 0){
-    direcao = !direcao;
-  }
-  
-  analogWrite(ledPin, pwm);
+  analogWrite(ledPin, leitura);
   
   delay(200);
 }
