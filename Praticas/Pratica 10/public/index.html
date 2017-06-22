@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bme280</title>
+		<!--
+		<link rel="icon" type="image/png" href="/resources/mqttorg.png">
+		-->
+
+		<script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="/bower_components/angular-animate/angular-animate.min.js"></script>
+		
+		<script type="text/javascript" src="app.js"></script>
+		<link rel="stylesheet" type="text/css" href="app.css">
+	</head>
+	<body ng-app="app" ng-controller="controller">
+		<h2>Prática 10 - Infravermelho</h2>
+		<div>
+			<button ng-click="remoteCtrlClick('liga/desliga')">Liga/desliga</button>
+			<button ng-click="remoteCtrlClick('up')">Up</button>
+			<button ng-click="remoteCtrlClick('down')">Down</button>
+			<button ng-click="remoteCtrlClick('menu')">Menu</button>
+			<button ng-click="remoteCtrlClick('enter')">Enter</button>
+			<button ng-click="remoteCtrlClick('esc')">Esc</button>
+		</div>
+
+		<br>
+		<br>
+
+		<div>
+			<h3>Alunos:</h3>
+			<p>
+				Daniel Amaral
+				<br>
+				Yuri Lopes
+				<br>
+				Yuri Santana
+			</p>
+		</div>
+	</body>
+</html>
